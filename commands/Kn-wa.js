@@ -6,23 +6,24 @@
 var target_chat_id = (chat && chat.chatid) ? chat.chatid : user.telegramid;
 
 var text = "💬 *اختر دولة لشراء رقم واتساب (WhatsApp):*\n\n" +
-  "اختر الدولة وسيقوم البوت بطلب الرقم لك فورياً عبر السيرفر الفعلي ↘️";
+  "اختر الدولة وسيقوم البوت بطلب الرقم لك فورياً عبر السيرفر الفعلي المباشر ↘️";
 
 var keyboard = [
   [
-    { text: "اليمن 🇾🇪 ¦ 20 ₽", callback_data: "Xi wa yemen" },
-    { text: "السعودية 🇸🇦 ¦ 35 ₽", callback_data: "Xi wa saudi" }
+    { text: "كولومبيا 🇨🇴 ¦ 15 ₽ (الأرخص)", callback_data: "Xi wa colombia 15" },
+    { text: "ألبانيا 🇦🇱 ¦ 15 ₽ (ممتاز)", callback_data: "Xi wa albania 15" }
   ],
   [
-    { text: "روسيا 🇷🇺 ¦ 15 ₽", callback_data: "Xi wa russia" },
-    { text: "أوكرانيا 🇺🇦 ¦ 16 ₽", callback_data: "Xi wa ukraine" }
+    { text: "أنغولا 🇦🇴 ¦ 18 ₽", callback_data: "Xi wa angola 18" },
+    { text: "مصر 🇪🇬 ¦ 20 ₽", callback_data: "Xi wa egypt 20" }
   ],
   [
-    { text: "إندونيسيا 🇮🇩 ¦ 10 ₽", callback_data: "Xi wa indonesia" },
-    { text: "مصر 🇪🇬 ¦ 15 ₽", callback_data: "Xi wa egypt" }
+    { text: "الأرجنتين 🇦🇷 ¦ 16 ₽", callback_data: "Xi wa argentina 16" },
+    { text: "أوكرانيا 🇺🇦 ¦ 16 ₽", callback_data: "Xi wa ukraine 16" }
   ],
   [
-    { text: "👑 سيرفر موقع محمد المخصص (واتساب)", callback_data: "buy_mohammed wa" }
+    { text: "إندونيسيا 🇮🇩 ¦ 10 ₽", callback_data: "Xi wa indonesia 10" },
+    { text: "روسيا 🇷🇺 ¦ 45 ₽", callback_data: "Xi wa russia 45" }
   ],
   [
     { text: "- رجوع 🔙", callback_data: "Buynum" }

@@ -5,24 +5,21 @@
 
 var target_chat_id = (chat && chat.chatid) ? chat.chatid : user.telegramid;
 
-var text = "🎁 *عروض أرقام WhatsApp المميزة:*\n\n" +
+var text = "🎁 *عروض أرقام WhatsApp المميزة الحقيقية:*\n\n" +
   "اختر الدولة المطلوبة للشراء الفوري لواتساب ↘️";
 
 var keyboard = [
   [
-    { text: "اليمن 🇾🇪 ¦ 20 ₽", callback_data: "Xi-wa-yemen" },
-    { text: "السعودية 🇸🇦 ¦ 35 ₽", callback_data: "Xi-wa-saudi" }
+    { text: "كولومبيا 🇨🇴 ¦ 15 ₽", callback_data: "Xi wa colombia 15" },
+    { text: "ألبانيا 🇦🇱 ¦ 15 ₽", callback_data: "Xi wa albania 15" }
   ],
   [
-    { text: "مصر 🇪🇬 ¦ 15 ₽", callback_data: "Xi-wa-egypt" },
-    { text: "العراق 🇮🇶 ¦ 25 ₽", callback_data: "Xi-wa-iraq" }
+    { text: "مصر 🇪🇬 ¦ 20 ₽", callback_data: "Xi wa egypt 20" },
+    { text: "أنغولا 🇦🇴 ¦ 18 ₽", callback_data: "Xi wa angola 18" }
   ],
   [
-    { text: "إندونيسيا 🇮🇩 ¦ 10 ₽", callback_data: "Xi-wa-indonesia" },
-    { text: "فيتنام 🇻🇳 ¦ 11 ₽", callback_data: "Xi-wa-vietnam" }
-  ],
-  [
-    { text: "👑 سيرفر موقع محمد لواتساب (مضمون)", callback_data: "buy_mohammed wa" }
+    { text: "الأرجنتين 🇦🇷 ¦ 16 ₽", callback_data: "Xi wa argentina 16" },
+    { text: "أوكرانيا 🇺🇦 ¦ 16 ₽", callback_data: "Xi wa ukraine 16" }
   ],
   [
     { text: "🔙 رجوع للقائمة الرئيسية", callback_data: "/start" }

@@ -5,20 +5,21 @@
 
 var target_chat_id = (chat && chat.chatid) ? chat.chatid : user.telegramid;
 
-var text = "🎁 *عروض أرقام Telegram السريعة الحصرية:*\n\n" +
+var text = "🎁 *عروض أرقام Telegram السريعة الحقيقية:*\n\n" +
   "اختر الدولة للشراء الفوري بأقل تكلفة وجودة تفعيل مضمونة ↘️";
 
 var keyboard = [
   [
-    { text: "روسيا 🇷🇺 ¦ 15 ₽", callback_data: "Xi-tg-russia" },
-    { text: "أوكرانيا 🇺🇦 ¦ 16 ₽", callback_data: "Xi-tg-ukraine" }
+    { text: "كولومبيا 🇨🇴 ¦ 10 ₽ (الأرخص)", callback_data: "Xi tg colombia 10" },
+    { text: "مصر 🇪🇬 ¦ 15 ₽", callback_data: "Xi tg egypt 15" }
   ],
   [
-    { text: "كازاخستان 🇰🇿 ¦ 18 ₽", callback_data: "Xi-tg-kazakhstan" },
-    { text: "إندونيسيا 🇮🇩 ¦ 12 ₽", callback_data: "Xi-tg-indonesia" }
+    { text: "أنغولا 🇦🇴 ¦ 12 ₽", callback_data: "Xi tg angola 12" },
+    { text: "ألبانيا 🇦🇱 ¦ 18 ₽", callback_data: "Xi tg albania 18" }
   ],
   [
-    { text: "👑 سيرفر موقع محمد لتيليجرام (سريع)", callback_data: "buy_mohammed tg" }
+    { text: "الأرجنتين 🇦🇷 ¦ 22 ₽", callback_data: "Xi tg argentina 22" },
+    { text: "روسيا 🇷🇺 ¦ 15 ₽", callback_data: "Xi tg russia 15" }
   ],
   [
     { text: "🔙 رجوع للقائمة الرئيسية", callback_data: "/start" }

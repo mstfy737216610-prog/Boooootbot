@@ -1,25 +1,24 @@
 /*
   Command: check_real_code
-  Description: Check SMS code safely
+  Description: Query real SMS verification code from 5SIM API
 */
 
-try {
-  var phone = User.getProperty("current_active_phone") || "+967770000000";
-  
-  // Simulated or real code response
-  var received_code = Math.floor(100000 + Math.random() * 900000).toString();
-  
-  var text = "🎉 تم استلام كود التفعيل الحقيقي بنجاح! ✅\n\n" +
-    "☎️ الرقم: " + phone + "\n" +
-    "💬 كود التحقق (OTP): " + received_code + "\n\n" +
-    "📜 نص الرسالة:\nYour verification code is " + received_code + "\n\n" +
-    "إضغط على الكود لنسخه ووضعه في التطبيق مباشرة.";
+var MUSTAFA_5SIM_TOKEN = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTkxMzcxMTQsImlhdCI6MTc4NzYwMTExNCwicmF5IjoiNTZlYmFlNjg0NGQyMTAzZjAyZjUyMzJlYjVhODViNTEiLCJzdWIiOjQ0MzcwMDF9.qEpXfNoatnjn3MLJhQErUVmgfIJ-cP_laTBFdz8RkeMietQrjYqZnRHTd23NjPxVPwn0HpoAz4lAmOwTiuPjaUQkU2u9QCnh2i89MAedpfm2kosspiug1Ux6o7pJ-2fVqPGW27cQtGmOz-vZne997NCbdCc7eDxoX3ZknvorIu1ZmaCEnVlk2-t-YdHAi90GzVqjrvE0dZqZM4Mp-IgX8z71Bv1neikePV2RsE68hGMM8Z2bONHMeAqxhtezVcW0ykW1pCk_NLjcSnTWFXo_L_dgVvZLQnPB1n-ROqFan55gB-uEkuU0KN0gkvnozT9_N4wTWjAYiLTy1S3-vaooDA";
 
-  Bot.sendInlineKeyboard([
-    [ { title: "☎️ شراء رقم جديد", command: "Buynum" } ],
-    [ { title: "🏡 القائمة الرئيسية", command: "/start" } ]
-  ], text);
+var order_id = ("" + (params || "")).trim() || User.getProperty("current_active_order_id");
 
-} catch (err) {
-  Bot.sendMessage("⚠️ جاري فحص وصول الكود... يرجى إعادة الضغط خلال ثوانٍ.");
+if (!order_id) {
+  Bot.sendMessage("⚠️ لا يوجد طلب نشط حالياً للتحقق من الكود.");
+  return;
 }
+
+var check_url = "https://5sim.net/v1/user/check/" + order_id;
+
+HTTP.get({
+  url: check_url,
+  headers: {
+    "Authorization": "Bearer " + MUSTAFA_5SIM_TOKEN,
+    "Accept": "application/json"
+  },
+  success: "on_check_code " + order_id
+});

@@ -10,11 +10,12 @@ var text = "🐻 *ـ مرحباً عزيزي العميل* ،\n\n" +
 
 var keyboard = [
   [
-    { text: "👑 سيرفر موقع محمد المخصص (الأعلى سرعة)", callback_data: "buy_mohammed" }
+    { text: "🐬 - سيرفر واتسأب كولومبيا (15 ₽)", callback_data: "Xi wa colombia 15" },
+    { text: "🍂 - سيرفر تيليجرام كولومبيا (10 ₽)", callback_data: "Xi tg colombia 10" }
   ],
   [
-    { text: "🐬 - سيرفر واتسأب الملكي المُـمـيز ⭐️", callback_data: "offers_wa" },
-    { text: "🍂 - سيرفر تيليجرام الملكي المُـمـيز ⭐️", callback_data: "offers_tg" }
+    { text: "🐬 - سيرفر واتسأب ألبانيا (15 ₽)", callback_data: "Xi wa albania 15" },
+    { text: "🍂 - سيرفر تيليجرام مصر (15 ₽)", callback_data: "Xi tg egypt 15" }
   ],
   [
     { text: "- رجوع 🔙", callback_data: "/start" }

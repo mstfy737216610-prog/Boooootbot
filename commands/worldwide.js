@@ -6,20 +6,20 @@
 var target_chat_id = (chat && chat.chatid) ? chat.chatid : user.telegramid;
 
 var text = "🎲 *- سيرفرات الأرقام الأكثر توفراً وسرعة* 🌐\n\n" +
-  "*- إضغط على أحد السيرفرات بالأسفل* للشراء الفوري من دولة متاحة فورياً بدون انتظار 💰";
+  "*- إضغط على أحد السيرفرات بالأسفل* للشراء الفعلي المباشر من الموقع 💰";
 
 var keyboard = [
   [
-    { text: "♻️ سيرفر [ WhatsApp ] الأكثر توفراً (10 ₽)", callback_data: "Xi-wa-indonesia" }
+    { text: "♻️ سيرفر [ WhatsApp ] كولومبيا (15 ₽)", callback_data: "Xi wa colombia 15" }
   ],
   [
-    { text: "♻️ سيرفر [ WhatsApp ] VIP مضمون (16 ₽)", callback_data: "Xi-wa-russia" }
+    { text: "♻️ سيرفر [ WhatsApp ] ألبانيا VIP (15 ₽)", callback_data: "Xi wa albania 15" }
   ],
   [
-    { text: "♻️ سيرفر [ Telegram ] سريع (15 ₽)", callback_data: "Xi-tg-russia" }
+    { text: "♻️ سيرفر [ Telegram ] كولومبيا ($0.10) (10 ₽)", callback_data: "Xi tg colombia 10" }
   ],
   [
-    { text: "👑 سيرفر موقع محمد الحصري (أعلى توفر)", callback_data: "buy_mohammed" }
+    { text: "♻️ سيرفر [ Telegram ] مصر توفر عالي (15 ₽)", callback_data: "Xi tg egypt 15" }
   ],
   [
     { text: "- رجوع 🔙", callback_data: "/start" }

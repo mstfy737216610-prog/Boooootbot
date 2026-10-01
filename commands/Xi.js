@@ -1,69 +1,57 @@
 /*
   Command: Xi
-  Description: Live number purchase execution with strict balance check
+  Description: Live number purchase directly from real 5SIM API
 */
 
-try {
-  var target_chat_id = (chat && chat.chatid) ? chat.chatid : user.telegramid;
-  
-  // 1. Strict Balance Verification
-  var price = 15.0;
-  var uid = "" + (user.telegramid || "");
-  var user_bal_str = Bot.getProperty("balance_" + uid) || User.getProperty("balance");
-  var user_bal = (user_bal_str !== undefined && user_bal_str !== null) ? parseFloat(user_bal_str) : 0.0;
-  
-  if (isNaN(user_bal) || user_bal < price) {
-    var no_bal_msg = "⚠️ عذراً! رصيدك الحالي (" + (isNaN(user_bal) ? "0.0" : user_bal.toFixed(1)) + " ₽) غير كافٍ لشراء هذا الرقم (" + price + " ₽).\n\nيرجى شحن حسابك أولاً بالضغط على زر (•🎳 أشحن رصيدك•) عبر الكريمي، النجم، أو كروت الشحن.";
-    
-    Bot.sendInlineKeyboard([
-      [ { title: "•🎳 أشحن رصيدك الآن•", command: "Payment" } ],
-      [ { title: "🏡 القائمة الرئيسية", command: "/start" } ]
-    ], no_bal_msg);
-    return;
-  }
-  
-  // 2. Parse service & country safely
-  var service = "whatsapp";
-  var country = "اليمن";
-  
-  if (typeof params !== "undefined" && params) {
-    var p_str = "" + params;
-    var p_arr = p_str.split(" ");
-    if (p_arr.length > 0 && p_arr[0]) service = p_arr[0];
-    if (p_arr.length > 1 && p_arr[1]) country = p_arr[1];
-  }
-  
-  // 3. Deduct balance from user wallet
-  var new_bal = (user_bal - price).toFixed(2);
-  Bot.setProperty("balance_" + uid, new_bal, "string");
-  User.setProperty("balance", new_bal, "string");
-  
-  // 4. Generate order tracking
-  var random_suffix = Math.floor(100000 + Math.random() * 900000);
-  var order_id = "ORD-" + random_suffix;
-  var phone = "+967" + Math.floor(771000000 + Math.random() * 8999999);
-  
-  User.setProperty("current_active_order_id", order_id, "string");
-  User.setProperty("current_active_phone", phone, "string");
-  User.setProperty("current_order_price", "" + price, "string");
-  
-  var success_text = "✅ تم شراء وتخصيص الرقم بنجاح! 📱\n\n" +
-    "☎️ الرقم: " + phone + "\n" +
-    "📱 الخدمة: " + service + "\n" +
-    "🌐 الدولة: " + country + "\n" +
-    "💰 السعر: " + price + " ₽ (تم خصمها من رصيدك)\n" +
-    "💷 رصيدك المتبقي: " + new_bal + " ₽\n" +
-    "⏳ الصلاحية: 15:00 دقيقة\n\n" +
-    "⚠️ الخطوة التالية:\n" +
-    "1️⃣ انسخ الرقم وضعه في التطبيق واطلب كود الـ SMS.\n" +
-    "2️⃣ اضغط على زر (📩 اجلب الكود ♻️) لاستلام الرمز.";
+var MUSTAFA_5SIM_TOKEN = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTkxMzcxMTQsImlhdCI6MTc4NzYwMTExNCwicmF5IjoiNTZlYmFlNjg0NGQyMTAzZjAyZjUyMzJlYjVhODViNTEiLCJzdWIiOjQ0MzcwMDF9.qEpXfNoatnjn3MLJhQErUVmgfIJ-cP_laTBFdz8RkeMietQrjYqZnRHTd23NjPxVPwn0HpoAz4lAmOwTiuPjaUQkU2u9QCnh2i89MAedpfm2kosspiug1Ux6o7pJ-2fVqPGW27cQtGmOz-vZne997NCbdCc7eDxoX3ZknvorIu1ZmaCEnVlk2-t-YdHAi90GzVqjrvE0dZqZM4Mp-IgX8z71Bv1neikePV2RsE68hGMM8Z2bONHMeAqxhtezVcW0ykW1pCk_NLjcSnTWFXo_L_dgVvZLQnPB1n-ROqFan55gB-uEkuU0KN0gkvnozT9_N4wTWjAYiLTy1S3-vaooDA";
+
+var uid = "" + (user.telegramid || "");
+var target_chat_id = (chat && chat.chatid) ? chat.chatid : user.telegramid;
+
+// 1. Parse params: service, country, price
+var service = "whatsapp";
+var country = "colombia";
+var price = 15.0;
+
+if (typeof params !== "undefined" && params) {
+  var p_arr = ("" + params).trim().split(/\s+/);
+  if (p_arr[0]) service = p_arr[0].toLowerCase();
+  if (p_arr[1]) country = p_arr[1].toLowerCase();
+  if (p_arr[2]) price = parseFloat(p_arr[2]) || price;
+}
+
+// Map service aliases
+if (service === "wa" || service === "واتساب") service = "whatsapp";
+if (service === "tg" || service === "تيليجرام") service = "telegram";
+
+// 2. Strict Balance Verification
+var user_bal_str = Bot.getProperty("balance_" + uid) || User.getProperty("balance");
+var user_bal = (user_bal_str !== undefined && user_bal_str !== null) ? parseFloat(user_bal_str) : 0.0;
+
+if (isNaN(user_bal) || user_bal < price) {
+  var no_bal_msg = "⚠️ *عذراً! رصيدك غير كافٍ لشراء هذا الرقم*\n\n" +
+    "💰 رصيدك الحالي: *" + (isNaN(user_bal) ? "0.0" : user_bal.toFixed(1)) + " ₽*\n" +
+    "💸 سعر الرقم المطلوب: *" + price + " ₽*\n\n" +
+    "يرجى شحن حسابك أولاً بالضغط على زر (•🎳 أشحن رصيدك•) عبر الكريمي، النجم، أو كروت الشحن.";
   
   Bot.sendInlineKeyboard([
-    [ { title: "📩 اجلب الكود ♻️", command: "check_real_code " + order_id } ],
-    [ { title: "🚫 إلغاء الرقم واسترجاع الرصيد", command: "cancel_real_number " + order_id } ],
+    [ { title: "•🎳 أشحن رصيدك الآن•", command: "Payment" } ],
     [ { title: "🏡 القائمة الرئيسية", command: "/start" } ]
-  ], success_text);
-
-} catch (err) {
-  Bot.sendMessage("⚠️ حدث خطأ أثناء معالجة الطلب: " + err);
+  ], no_bal_msg);
+  return;
 }
+
+// 3. Inform user that live purchase request is being sent
+Bot.sendMessage("⏳ *جاري الاتصال بموقع التوريد (5SIM) وطلب الرقم الفعلي لدولة " + country + "... يرجى الانتظار ثوانٍ*", { parse_mode: "Markdown" });
+
+// 4. Send real HTTP request to 5SIM API
+var buy_url = "https://5sim.net/v1/user/buy/activation/" + country + "/any/" + service;
+
+HTTP.get({
+  url: buy_url,
+  headers: {
+    "Authorization": "Bearer " + MUSTAFA_5SIM_TOKEN,
+    "Accept": "application/json"
+  },
+  success: "on_5sim_buy " + price + " " + country + " " + service
+});
