@@ -1,0 +1,17 @@
+[
+  {
+    "id": "mustafa-5sim",
+    "name": "سيرفر مصطفى (5SIM.NET #4437001)",
+    "url": "https://5sim.net/v1",
+    "apiKey": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTkxMzcxMTQsImlhdCI6MTc4NzYwMTExNCwicmF5IjoiNTZlYmFlNjg0NGQyMTAzZjAyZjUyMzJlYjVhODViNTEiLCJzdWIiOjQ0MzcwMDF9.qEpXfNoatnjn3MLJhQErUVmgfIJ-cP_laTBFdz8RkeMietQrjYqZnRHTd23NjPxVPwn0HpoAz4lAmOwTiuPjaUQkU2u9QCnh2i89MAedpfm2kosspiug1Ux6o7pJ-2fVqPGW27cQtGmOz-vZne997NCbdCc7eDxoX3ZknvorIu1ZmaCEnVlk2-t-YdHAi90GzVqjrvE0dZqZM4Mp-IgX8z71Bv1neikePV2RsE68hGMM8Z2bONHMeAqxhtezVcW0ykW1pCk_NLjcSnTWFXo_L_dgVvZLQnPB1n-ROqFan55gB-uEkuU0KN0gkvnozT9_N4wTWjAYiLTy1S3-vaooDA",
+    "apiType": "5sim",
+    "profitMargin": 2,
+    "currency": "₽",
+    "isActive": true,
+    "liveBalance": 3.4971,
+    "email": "mstfy737216610@gmail.com",
+    "userId": 4437001,
+    "rating": 96,
+    "notes": "المزود الرئيسي المعتمد باسم مصطفى - توكن JWT صالح لمدة سنة"
+  }
+]

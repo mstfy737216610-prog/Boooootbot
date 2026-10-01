@@ -1,0 +1,19 @@
+{
+  "whatsapp": {
+    "albania": { "name": "ألبانيا 🇦🇱", "priceRub": 15.0, "costUsd": 0.24 },
+    "angola": { "name": "أنغولا 🇦🇴", "priceRub": 18.0, "costUsd": 0.32 },
+    "colombia": { "name": "كولومبيا 🇨🇴", "priceRub": 15.0, "costUsd": 0.15 },
+    "argentina": { "name": "الأرجنتين 🇦🇷", "priceRub": 16.0, "costUsd": 0.25 },
+    "egypt": { "name": "مصر 🇪🇬", "priceRub": 20.0, "costUsd": 0.20 },
+    "afghanistan": { "name": "أفغانستان 🇦🇫", "priceRub": 22.0, "costUsd": 0.45 },
+    "russia": { "name": "روسيا 🇷🇺", "priceRub": 45.0, "costUsd": 0.60 }
+  },
+  "telegram": {
+    "colombia": { "name": "كولومبيا 🇨🇴 (أرخص سعر $0.10)", "priceRub": 10.0, "costUsd": 0.10 },
+    "egypt": { "name": "مصر 🇪🇬 (متوفر 3 مليون رقم)", "priceRub": 15.0, "costUsd": 0.20 },
+    "angola": { "name": "أنغولا 🇦🇴", "priceRub": 12.0, "costUsd": 0.22 },
+    "albania": { "name": "ألبانيا 🇦🇱", "priceRub": 18.0, "costUsd": 0.30 },
+    "afghanistan": { "name": "أفغانستان 🇦🇫", "priceRub": 20.0, "costUsd": 0.45 },
+    "argentina": { "name": "الأرجنتين 🇦🇷", "priceRub": 22.0, "costUsd": 0.50 }
+  }
+}

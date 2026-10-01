@@ -1,0 +1,6 @@
+{
+  "name": "متجر وبوت مورد الأرقام الافتراضية - Plus SMS Hub",
+  "description": "منظومة إدارة وتوريد الأرقام الافتراضية وربط المزودين الحقيقيين عبر API، وإدارة القنوات وطرق الشحن وسيرفرات المواقع للبوت والمتجر المتكامل.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
